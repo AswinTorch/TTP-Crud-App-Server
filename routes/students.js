@@ -32,4 +32,29 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
+// Route to handle adding a student
+// /api/students/
+router.post("/", async (req, res, next) => {
+  // Take the form data from the request body
+  const { firstName, lastName, email, imageUrl, gpa } = req.body;
+  // Create a student object
+  const studentObj = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    imageUrl: imageUrl,
+    gpa: gpa,
+  };
+
+  try {
+    // Create a new student on the database
+    const newStudent = await Student.create(studentObj);
+    // The database would return a student
+    // send that student as a json to the client
+    res.status(201).send(newStudent);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
