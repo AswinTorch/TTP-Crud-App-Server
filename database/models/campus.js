@@ -6,7 +6,7 @@ const Campus = db.define("campus", {
   address: { type: Sequelize.STRING, allowNull: false },
   imageUrl: {
     type: Sequelize.STRING,
-    defaultValue: "https://via.placeholder.com/480x240?text=Placeholder",
+    defaultValue: "https://via.placeholder.com/480x240?text=Campus",
   },
   description: { type: Sequelize.TEXT, defaultValue: "", allowNull: false },
 });
